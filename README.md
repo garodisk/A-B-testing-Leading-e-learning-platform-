@@ -179,6 +179,8 @@ What we want to do is **assessing whether the differences between evaluation met
 
 **2) We expect not to see any significant difference between the values of net conversion rate of the experiment and control groups.**
 
+The **confidence interval does not contain 0** that means the difference in the gross conversion is **statistically different** and **similar** to what we were expecting.
+
 The **confidence interval contain 0** that means the difference in the net conversion is **not statistically different** and **similar** to what we were expecting. We expected the net conversion rate to be almost similar.
 
 
