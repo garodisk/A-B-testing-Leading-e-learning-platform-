@@ -1,5 +1,5 @@
 # A-B-testing-Leading-e-learning-platform-
-Analyzing the different metrics and conducting a A/B test to analyze whether a new feature should be implemented for a leading -Learning platform
+**Analyzing the different metrics and using the data from a A/B test to analyze whether a new feature should be implemented for a leading -Learning platform. It involves analyzing metrics at various levels of the funnel, checking for the invariants and evaluation metrics, doing a sanity check and then checking for statistical significance using analytical and sign test methods**
 
 # **1. Introduction**
 
