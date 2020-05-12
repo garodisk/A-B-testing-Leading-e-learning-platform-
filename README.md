@@ -80,10 +80,113 @@ We will use this sample-size calculator (http://www.evanmiller.org/ab-testing/sa
 
 
 
+There are two points to note here. First, I did not adjust significant level based on the fact that we have multiple metrics. Bonferroni is one approach to such adjustment, and there are more approaches to do so. I did not adjust, because these metrics are closely related to each other, and Bonferroni would be too conservative, cause inflamation of the sample sizes. Even now these sample sizes are very high, as we will see, when we consider the unique cookie number of overview page visitors. It is possible to reduce the alpha in order to reduce the false positive probability of the whole test anyway.
 
 
+**Summary:**
+
+**Metric 1**  Gross Conversion
+
+Baseline Conversion: 20.625%
+
+Minimum Detectable Effect: 1%
+
+alpha: 5%
+
+beta: 20%
+
+1 - beta: 80%
+
+sample size = 25,835 enrollments/group
+
+Number of groups = 2 (experiment and control)
+
+total sample size = 51,670 enrollments
+
+clicks/pageview: 3200/40000 = .08 clicks/pageview
+
+pageviews = 645,875
+
+**Metric 2** Retention
+
+Baseline Conversion: 53%
+
+Minimum Detectable Effect: 1%
+
+alpha: 5%
+
+beta: 20%
+
+1 - beta: 80%
+
+sample size = 39,155 enrollments/group
+
+Number of groups = 2 (experiment and control)
+
+total sample size = 78,230 enrollments
+
+enrollments/pageview: 660/40000 = .0165 enrollments/pageview
+
+pageviews = 78,230/.0165 = 4,741,212
+
+**Metric 3** Net Conversion
+
+Baseline Conversion: 10.9313%
+
+Minimum Detectable Effect: .75%
+
+alpha: 5%
+
+beta: 20%
+
+1 - beta: 80%
+
+sample size = 27,413 enrollments/group
+
+Number of groups = 2 (experiment and control)
+
+total sample size = 54,826
+
+clicks/pageview: 3200/40000 = .08 clicks/pageview
+
+pageviews = 685,325
 
 
+In all the 3 cases, the **pageviews** required is huge.
+
+# **5. Sanity Check**
+
+Next, we will do the sanity check for all the metrics
+
+The first step in validation of the experiment is assessment of invariant metrics. There are some metrics that are expected to have more or less identical values in the both experiment and control groups.
+
+From the metrics that we have, I have chosen the number of cookies, number of clicks, and click-through probability as invariant metrics. Now using this data, I check whether the values of these metrics are significantly different in the experiment and control groups.
+
+For the counts metrics, we assumed that 50% of the experiment traffic goes to the experiment group and 50% goes to the control group. If we call these two groups success and failure, then the model can be a Bernoulli distribution. So I would check whether the current counts of these two groups can come from a population with 0.5 change of success or failure. And I do it using bootstrapping to estimate and build confidence interval.
+
+Null Hypothesis: Status quo. Any difference between the metric value of the two groups is due to chance. Alternate Hypothesis: The difference between the metric value of the two groups is meaningful, and significant. It cannot be due to random change.
+
+It is said in the course that we should calculate the fraction of the control group on the total. It can be the difference of the numbers of the two groups, or relative size of each group to another one. There are different ways anyway.
+
+
+# **6. Effect Size tests**
+
+After all the sanity checks were passed, and the experiment data is validated to some extent, we can go forward and analyze the **evaluation metrics**.
+
+What we want to do is **assessing whether the differences between evaluation metric values of the control and experiment groups are significant or not**. Previously, we had chosen gross conversion and net conversion as the two evaluation metrics.
+
+**1) We expect the gross conversion to be lower in the experiment group since the number of enrollments should be lowered**
+
+**2) We expect not to see any significant difference between the values of net conversion rate of the experiment and control groups.**
+
+The **confidence interval contain 0** that means the difference in the net conversion is **not statistically different** and **similar** to what we were expecting. We expected the net conversion rate to be almost similar.
+
+
+Out of 23 days, on 19 days, control has more Gross Conversion rate than the experiment group which is **consistent** with our previous results.
+
+Also, for net  conversion rate case, control group has higher value for 13 days and for the other 10 daays, the experiment group has a higher value which makes sense since there shouldn't be any expected difference.
+
+**Therefore, as per the resullts, the online elearning platform should launch the new feature.**
 
 
 
