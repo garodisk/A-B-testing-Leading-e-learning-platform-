@@ -63,14 +63,23 @@ So the last three can be chosen as evaluation metircs, and I choose all three no
 
 # **3. Measure of variability**
 
-Now, let's calculate the variability of the metrics. It is probably the “standard deviation of the sampling distribution” or standard error(SE), rather than the simple standard deviation. The standard error of the current metrics depends on the sample size, and can be computed either **analytically** or **empirically**. Computing it analytically means using an assumption that it follows a statistical distribution (like normal) and using the central limit theorem to calculate it. In general in a real world scenario, it is always useful to calculate it both analytically and empirically ( **using A/A tests**) as empirical calculations are better estimates since they don't have any assumptions though it requires more resources when it comes to time and money. Here, I will use just analytical calculations for our purpose.
+The next step will be to calculate the variability of the different metrics. It is the “standard deviation of the sampling distribution” or standard error(SE), rather than the simple standard deviation. The standard error of the current metrics depends on the sample size, and can be computed either **analytically** or **empirically**. Computing it analytically means using an assumption that it follows a statistical distribution (like normal) and using the central limit theorem to calculate it. In general in a real world scenario, it is always useful to calculate it both analytically and empirically ( **using A/A tests**) as empirical calculations are better estimates since they don't have any assumptions though it requires more resources when it comes to time and money. Here, I will use just analytical calculations for our purpose.
 
 
 I would rather go empirically but it is insisted to use analytical method.
 
 Since the daily unique cookies of the overview page is 5000, we need to figure out sample size for each metric. The sample size is equal to the denominator quantity, assuming 5000 unique cookies for the overview page.
 
-The formula which is used here for estimation of the standard error is based on CLT, and the fact that sampling distribution of the metrics has normal distribution.
+# **4. Sizing**
+
+
+This is the more interesting part of the report. In any experiment design, determination of the sample size is a fundamental step. Based on the distribution of the metric, the sample size is a function of some parameters such as alpha, i.e. significance level, beta, false negative probability or type II error, baseline conversion, practical significance and so.
+
+We will use this sample-size calculator (http://www.evanmiller.org/ab-testing/sample-size.html), to calculate the sample size.
+
+
+
+
 
 
 
